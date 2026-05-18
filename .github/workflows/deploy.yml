@@ -25,12 +25,13 @@ jobs:
             git pull origin main
 
             # 3. Safely stop and clean up old containers (will not crash if they don't exist)
-            docker stop aml-service-img || true
-            docker rm aml-service-img || true
+            docker stop aml-service || true
+            docker rm aml-service || true
             docker rmi aml-service-img || true
 
             # 4. Rebuild the image
-            docker build -t aml-service-img .
+            docker compose down
+            docker compose up --build -d
 
             # 5. Run the new container (Mapping a unique external port, e.g., 5001 to internal 5000)
             docker run -d --name aml-service aml-service-img
