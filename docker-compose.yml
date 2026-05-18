@@ -21,11 +21,11 @@ services:
     depends_on:
       - db
     ports:
-      - "5193:5193"
+      - "5193:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__MyDb=Server=db;Database=AMLServiceDB;User Id=sa;Password=HelloDarknessMyOldFriend;TrustServerCertificate=true;
-      - RabbitMQ__host_name=rabbitmq
+      - RabbitMQ__host_name=76.13.15.132
       - RabbitMQ__port=5672
       - RabbitMQ__user_name=guest
       - RabbitMQ__password=guest
