@@ -82,6 +82,6 @@ public class AnalysisResponseMessageHandler(
         await repo.UpdateAnalysisAsync(analysis, ct);
         // notify the user that his analysis has completed
         await emailService.SendAnalysisCompleteEmailAsync(result.Email, result.Username, result.AnalysisId,
-            "Analysis Completed", ct);
+            "https://aml2ligand.online/lab", ct);
     }
 }
