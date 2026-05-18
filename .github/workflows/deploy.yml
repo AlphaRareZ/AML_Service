@@ -32,6 +32,3 @@ jobs:
             # 4. Rebuild the image
             docker compose down
             docker compose up --build -d
-
-            # 5. Run the new container (Mapping a unique external port, e.g., 5001 to internal 5000)
-            docker run -d --name aml-service aml-service-img
