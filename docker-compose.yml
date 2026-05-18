@@ -6,7 +6,7 @@ services:
     container_name: aml-sql-server
     environment:
       ACCEPT_EULA: "Y"
-      MSSQL_SA_PASSWORD: "HelloDarknessMyOldFriend"
+      MSSQL_SA_PASSWORD: "Slayer!9"
     ports:
       - "1433:1433"
     volumes:
@@ -24,7 +24,7 @@ services:
       - "5193:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__MyDb=Server=db;Database=AMLServiceDB;User Id=sa;Password=HelloDarknessMyOldFriend;TrustServerCertificate=true;
+      - ConnectionStrings__MyDb=Server=db;Database=AMLServiceDB;User Id=sa;Password=Slayer!9;TrustServerCertificate=true;
       - RabbitMQ__host_name=76.13.15.132
       - RabbitMQ__port=5672
       - RabbitMQ__user_name=guest
