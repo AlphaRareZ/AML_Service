@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: aml-sql-server
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "YourStrong!Passw0rd"
+    ports:
+      - "1433:1433"
+    volumes:
+      - amldb:/var/opt/mssql
+
+
+  aml-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aml-service-api
+    depends_on:
+      - db
+      - rabbitmq
+    ports:
+      - "5193:5193"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__MyDb=Server=db;Database=AMLServiceDB;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=true;
+      - RabbitMQ__host_name=rabbitmq
+      - RabbitMQ__port=5672
+      - RabbitMQ__user_name=guest
+      - RabbitMQ__password=guest
+
+volumes:
+  amldb:
